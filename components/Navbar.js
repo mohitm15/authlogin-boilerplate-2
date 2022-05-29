@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Navbar = () => {
+  const router = useRouter();
+
+  const [usertoken, setUsertoken] = useState({ value: null });
+
+  useEffect(() => {
+    const authToken = localStorage.getItem("authToken");
+    if (authToken != null) {
+      setUsertoken({ value: authToken });
+    }
+  }, []);
+
+  //console.log("usertokem.valuer = ", usertoken.value)
+
+  //TODO1: to remove the delay caused due to the setUsertoken 
+
+  //TODO2: react-toastify
+
+  //TODO3: forgot password ( use of jwt thing)
+
+  //TODO4: changePassword functionality
+
+  
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    router.push("/login");
+  };
+
   return (
     <>
       <header className="text-gray-400 bg-gray-900 body-font w-full">
@@ -29,14 +57,30 @@ const Navbar = () => {
               <a className="mr-5 hover:text-white">About</a>
             </Link>
           </nav>
-          <div className="flex flex-row space-x-2">
-          <button className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
-            <Link href={"/login"} ><a>Login</a></Link>
-          </button>
-          <button className="inline-flex items-center bg-blue-800 text-white border-2  border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
-              <Link href={"/signup"}><a>SignUp</a></Link>
-          </button>
-          </div>
+          {usertoken.value && (
+            <button
+              className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0"
+              onClick={handleLogout}
+            >
+              <Link href={"/login"}>
+                <a>Logout</a>
+              </Link>
+            </button>
+          )}
+          {!usertoken.value && (
+            <div className="flex flex-row space-x-2">
+              <button className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
+                <Link href={"/login"}>
+                  <a>Login</a>
+                </Link>
+              </button>
+              <button className="inline-flex items-center bg-blue-800 text-white border-2  border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
+                <Link href={"/signup"}>
+                  <a>SignUp</a>
+                </Link>
+              </button>
+            </div>
+          )}
         </div>
       </header>
     </>

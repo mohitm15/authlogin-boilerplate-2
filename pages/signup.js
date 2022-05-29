@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { toast, ToastContainer } from "react-toastify";
 
 const Signup = () => {
   const router = useRouter();
@@ -32,7 +33,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/signup", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,14 +49,32 @@ const Signup = () => {
     });
 
     const json = await response.json();
-    //console.log(json);
+    console.log("response from ui = ", json);
 
     if (json.success === true) {
-      localStorage.setItem("token", json.authToken);
-      router.push("/");
-      //props.showAlert("User Registered Successfully !", "info");
+      setCredentials((prevCredentials) => ({
+        ...prevCredentials,
+        [e.target.name]: "",
+      }));
+      toast.success('🦄 Wow so easy!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     } else {
-      //props.showAlert("Invalid Credentials", "danger");
+      toast.error("Sigup Failed! Please Try Again", {
+        position: "bottom-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -70,6 +89,17 @@ const Signup = () => {
   return (
     <>
       <div className=" w-full xl:flex xl:items-center xl:justify-center mx-auto">
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <div
           id="loginbody"
           className="sm:p-2 sm:border-2 pt-3 sm:mt-10 border-blue-900 rounded-xl bg-blue-200 lg:w-5/6 flex xl:flex-row item-center justify-center "
@@ -180,11 +210,11 @@ const Signup = () => {
                     {showPassword ? (
                       <AiFillEyeInvisible
                         title="Hide Password"
-                        onClick={togglePasswordVisibilty}
+                        onClick={toggleConfmPasswordVisibilty}
                       />
                     ) : (
                       <AiFillEye
-                        onClick={togglePasswordVisibilty}
+                        onClick={toggleConfmPasswordVisibilty}
                         title="Show Password"
                       />
                     )}

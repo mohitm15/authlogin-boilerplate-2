@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/login", {
+    const response = await fetch("http://localhost:3000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,11 +26,11 @@ const Login = () => {
       }),
     });
     const json = await response.json();
-    console.log(json);
+    //console.log("resp from login ui= ",json);
 
     if (json.success === true) {
       //storing the authtoken
-      localStorage.setItem("token", json.authToken);
+      localStorage.setItem("authToken", json.authToken);
       //props.showAlert("User logged in successfully", "info");
       router.push("/");
     } else {
