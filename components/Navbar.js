@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import {FiLogIn} from "react-icons/fi"
 
 const Navbar = () => {
   const router = useRouter();
@@ -69,15 +70,18 @@ const Navbar = () => {
           )}
           {!usertoken.value && (
             <div className="flex flex-row space-x-2">
-              <button className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
+              <button className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3 focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
                 <Link href={"/login"}>
-                  <a>Login</a>
+                  <a>Login </a> 
+                   
                 </Link>
+                <FiLogIn  className="ml-1"/>
               </button>
               <button className="inline-flex items-center bg-blue-800 text-white border-2  border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
                 <Link href={"/signup"}>
                   <a>SignUp</a>
                 </Link>
+                <FiLogIn  className="ml-1"/>
               </button>
             </div>
           )}
