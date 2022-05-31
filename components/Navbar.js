@@ -1,40 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import {FiLogIn} from "react-icons/fi"
+import { FiLogIn } from "react-icons/fi";
+import { toast, ToastContainer } from "react-toastify";
 
-const Navbar = () => {
+const Navbar = ({usertoken,logout}) => {
   const router = useRouter();
 
-  const [usertoken, setUsertoken] = useState({ value: null });
 
-  useEffect(() => {
-    const authToken = localStorage.getItem("authToken");
-    if (authToken != null) {
-      setUsertoken({ value: authToken });
-    }
-  }, []);
+  console.log("usertoken from  navbar= ",usertoken)
 
-  //console.log("usertokem.valuer = ", usertoken.value)
 
-  //TODO1: to remove the delay caused due to the setUsertoken 
+  //TODO1: react-toastify (may be module is not supporting)
 
-  //TODO2: react-toastify
-
-  //TODO3: forgot password ( use of jwt thing)
-
-  //TODO4: changePassword functionality
+  //TODO2: changePassword functionality still facing error while decrypting
 
   
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    router.push("/login");
-  };
 
   return (
     <>
       <header className="text-gray-400 bg-gray-900 body-font w-full">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        {/* <ToastContainer
+          position="bottom-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        /> */}
           <a className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -58,30 +55,29 @@ const Navbar = () => {
               <a className="mr-5 hover:text-white">About</a>
             </Link>
           </nav>
-          {usertoken.value && (
+          {usertoken && (
             <button
               className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0"
-              onClick={handleLogout}
+              onClick={logout}
             >
               <Link href={"/login"}>
                 <a>Logout</a>
               </Link>
             </button>
           )}
-          {!usertoken.value && (
+          {!usertoken && (
             <div className="flex flex-row space-x-2">
               <button className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3 focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
                 <Link href={"/login"}>
-                  <a>Login </a> 
-                   
+                  <a>Login </a>
                 </Link>
-                <FiLogIn  className="ml-1"/>
+                <FiLogIn className="ml-1" />
               </button>
               <button className="inline-flex items-center bg-blue-800 text-white border-2  border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
                 <Link href={"/signup"}>
                   <a>SignUp</a>
                 </Link>
-                <FiLogIn  className="ml-1"/>
+                <FiLogIn className="ml-1" />
               </button>
             </div>
           )}

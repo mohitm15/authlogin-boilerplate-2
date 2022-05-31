@@ -76,12 +76,12 @@ const Changepassword = () => {
                   htmlFor="exampleInputEmail1"
                   className="block text-gray-800 ext-base sm:text-lg font-medium sm:font-bold mb-2"
                 >
-                  Email address
+                  Enter Email Again
                 </label>
                 <input
                   type="email"
                   className="shadow border rounded-md sm:rounded-lg w-full py-2 px-1 sm:px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder:italic placeholder:text-gray-400"
-                  placeholder="Type email here..."
+                  placeholder="Type email again here..."
                   id="email"
                   name="email"
                   value={newCredentials.email}
@@ -103,18 +103,18 @@ const Changepassword = () => {
                     htmlFor="password"
                     className="block text-gray-800 text-base sm:text-lg font-medium sm:font-bold mb-2 w-2/5"
                   >
-                    Password
+                    New Password
                   </label>
                   <span className="flex flex-row items-center  bg-white rounded-md px-1 sm:px-3  w-full">
                     <input
                       type={showPassword ? "text" : "password"}
                       className="shadow appearance-none border border-red-500 rounded-md sm:rounded-lg w-full py-2 px-1 sm:px-3 text-gray-700  leading-tight focus:border-sky-700 focus:shadow-outline placeholder:italic placeholder:text-gray-400"
                       placeholder="Type password here..."
-                      id="password"
-                      name="password"
+                      id="newPassword"
+                      name="newPassword"
                       minLength={5}
-                      value={newCredentials.password}
-                      onChange={(e) => onChange(e, "password")}
+                      value={newCredentials.newPassword}
+                      onChange={(e) => onChange(e, "newPassword")}
                       style={{ outline: "none", border: 0 }}
                       required
                     />
@@ -136,20 +136,20 @@ const Changepassword = () => {
               <div className="mb-3">
                 <div className="flex flex-col sm:items-baseline">
                   <label
-                    htmlFor="confmpassword"
-                    className="block text-gray-800 text-base sm:text-lg font-medium sm:font-bold mb-2 xl:w-2/5"
+                    htmlFor="confmNewPassword"
+                    className="block text-gray-800 text-base sm:text-lg font-medium sm:font-bold mb-2 xl:w-3/5"
                   >
-                    Confirm Password
+                    Confirm New Password
                   </label>
                   <span className="flex flex-row items-center  bg-white rounded-md px-1 sm:px-3  w-full">
                     <input
                       type={showConfmPassword ? "text" : "password"}
                       className="shadow appearance-none border border-red-500 rounded-md sm:rounded-lg w-full py-2 px-1 sm:px-3 text-gray-700 leading-tight focus:border-sky-700 focus:shadow-outline placeholder:italic placeholder:text-gray-400"
                       placeholder="Confirm password here..."
-                      id="confmpassword"
-                      name="confmpassword"
-                      value={newCredentials.confmpassword}
-                      onChange={(e) => onChange(e, "confmpassword")}
+                      id="confmNewPassword"
+                      name="confmNewPassword"
+                      value={newCredentials.confmNewPassword}
+                      onChange={(e) => onChange(e, "confmNewPassword")}
                       minLength={5}
                       required
                       style={{ border: 0, outline: "none" }}

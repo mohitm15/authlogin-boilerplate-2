@@ -26,7 +26,7 @@ const Login = () => {
       }),
     });
     const json = await response.json();
-    //console.log("resp from login ui= ",json);
+    console.log("resp from login ui= ",json);
 
     if (json.success === true) {
       //storing the authtoken
