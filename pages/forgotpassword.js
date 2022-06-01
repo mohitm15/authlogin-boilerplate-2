@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Forgotpassword = () => {
   const router = useRouter();
@@ -36,10 +37,36 @@ const Forgotpassword = () => {
 
     if (json.success === true) {
       //navigating to the changePassword endpoint
-      //props.showAlert("Selected Correct Credentials successfully", "info");
+      toast.success('User Selected Correct Credentials !', {
+        style: {
+          border: '2px solid green',
+          padding: '16px',
+          color: 'green',
+          backgroundColor: '#A6F987',
+          fontWeight:'800',
+          
+        },
+        iconTheme: {
+          primary: 'green',
+          secondary: '#FFFAEE',
+        },
+      });
       router.push("/changepassword");
     } else {
-      //props.showAlert("Selected Correct Credentials, Try Again!", "danger");
+      toast.error('Incorrect Choice Selected ! Please Try Again', {
+        style: {
+          border: '2px solid #9F1A11',
+          padding: '16px',
+          color: '#9F1A11',
+          backgroundColor: '#FAADA9',
+          fontWeight:'800',
+          
+        },
+        iconTheme: {
+          primary: '#9F1A11',
+          secondary: '#FFFAEE',
+        },
+      });
     }
   };
 
@@ -50,6 +77,7 @@ const Forgotpassword = () => {
   return (
     <>
       <div className=" xl:flex  xl:justify-center mx-auto p-10 ">
+        <Toaster />
         <div
           id="loginbody"
           className="sm:p-5 mt-10 border-2 border-blue-900 rounded-xl bg-blue-200 h-auto"

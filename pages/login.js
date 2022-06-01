@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
   const router = useRouter();
@@ -31,10 +32,37 @@ const Login = () => {
     if (json.success === true) {
       //storing the authtoken
       localStorage.setItem("authToken", json.authToken);
-      //props.showAlert("User logged in successfully", "info");
+      toast.success('User Logged In SuccessFully !', {
+        style: {
+          border: '2px solid green',
+          padding: '16px',
+          color: 'green',
+          backgroundColor: '#A6F987',
+          fontWeight:'800',
+          
+        },
+        iconTheme: {
+          primary: 'green',
+          secondary: '#FFFAEE',
+        },
+      });
       router.push("/");
     } else {
-      //props.showAlert("Invalid Credentials", "danger");
+      //error toast
+      toast.error('Invalid Credentials ! Please Try Again', {
+        style: {
+          border: '2px solid #9F1A11',
+          padding: '16px',
+          color: '#9F1A11',
+          backgroundColor: '#FAADA9',
+          fontWeight:'800',
+          
+        },
+        iconTheme: {
+          primary: '#9F1A11',
+          secondary: '#FFFAEE',
+        },
+      });
     }
   };
 
@@ -53,6 +81,7 @@ const Login = () => {
   return (
     <>
       <div className="w-full xl:flex xl:items-center xl:justify-center mx-auto ">
+        <Toaster />
         <div
           id="loginbody"
           className="sm:p-2 sm:border-2 sm:mt-10 border-blue-900 rounded-xl bg-blue-200 lg:w-5/6 flex xl:flex-row item-center justify-center "

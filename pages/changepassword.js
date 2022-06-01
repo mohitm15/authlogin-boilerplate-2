@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Changepassword = () => {
   const router = useRouter();
@@ -41,10 +43,36 @@ const Changepassword = () => {
 
     if (json.success === true) {
       localStorage.setItem("authToken", json.authToken);
-      //props.showAlert("Password Changed Successfully !", "info");
+      toast.success('Password Changed SuccessFully !', {
+        style: {
+          border: '2px solid green',
+          padding: '16px',
+          color: 'green',
+          backgroundColor: '#A6F987',
+          fontWeight:'800',
+          
+        },
+        iconTheme: {
+          primary: 'green',
+          secondary: '#FFFAEE',
+        },
+      });
       router.push("/login");
     } else {
-      //props.showAlert("Password Did Not Changed", "danger");
+      toast.error('Error ! Password Change Failed', {
+        style: {
+          border: '2px solid #9F1A11',
+          padding: '16px',
+          color: '#9F1A11',
+          backgroundColor: '#FAADA9',
+          fontWeight:'800',
+          
+        },
+        iconTheme: {
+          primary: '#9F1A11',
+          secondary: '#FFFAEE',
+        },
+      });
     }
   };
 
@@ -62,6 +90,7 @@ const Changepassword = () => {
   return (
     <>
       <div className=" p-1 flex flex-row item-center w-full justify-center">
+        <Toaster />
         <div
           id="loginbody"
           className="sm:p-5 mt-5 lg:mt-14 border-2 border-blue-900 rounded-xl bg-blue-200"

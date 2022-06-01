@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { toast, ToastContainer } from "react-toastify";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Signup = () => {
   const router = useRouter();
@@ -56,24 +56,34 @@ const Signup = () => {
         ...prevCredentials,
         [e.target.name]: "",
       }));
-      toast.success('🦄 Wow so easy!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
+      toast.success('User Registered SuccessFully !', {
+        style: {
+          border: '2px solid green',
+          padding: '16px',
+          color: 'green',
+          backgroundColor: '#A6F987',
+          fontWeight:'800',
+          
+        },
+        iconTheme: {
+          primary: 'green',
+          secondary: '#FFFAEE',
+        },
+      });
     } else {
-      toast.error("Sigup Failed! Please Try Again", {
-        position: "bottom-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
+      toast.error('Registration Failed ! Please Try Again', {
+        style: {
+          border: '2px solid #9F1A11',
+          padding: '16px',
+          color: '#9F1A11',
+          backgroundColor: '#FAADA9',
+          fontWeight:'800',
+          
+        },
+        iconTheme: {
+          primary: '#9F1A11',
+          secondary: '#FFFAEE',
+        },
       });
     }
   };
@@ -89,17 +99,7 @@ const Signup = () => {
   return (
     <>
       <div className=" w-full xl:flex xl:items-center xl:justify-center mx-auto">
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+        <Toaster />
         <div
           id="loginbody"
           className="sm:p-2 sm:border-2 pt-3 sm:mt-10 border-blue-900 rounded-xl bg-blue-200 lg:w-5/6 flex xl:flex-row item-center justify-center "

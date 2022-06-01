@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { FiLogIn } from "react-icons/fi";
-import { toast, ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 const Navbar = ({usertoken,logout}) => {
   const router = useRouter();
@@ -18,6 +18,7 @@ const Navbar = ({usertoken,logout}) => {
     <>
       <header className="text-gray-400 bg-gray-900 body-font w-full">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <Toaster />
         {/* <ToastContainer
           position="bottom-center"
           autoClose={2000}
