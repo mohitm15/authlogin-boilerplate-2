@@ -24,7 +24,7 @@ const Changepassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/api/changepassword", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/changepassword`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -154,7 +154,7 @@ const Changepassword = () => {
                       required
                       style={{ border: 0, outline: "none" }}
                     />
-                    {showPassword ? (
+                    {showConfmPassword ? (
                       <AiFillEyeInvisible
                         title="Hide Password"
                         onClick={toggleConfmPasswordVisibilty}

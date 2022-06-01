@@ -6,7 +6,7 @@ var jwt = require("jsonwebtoken");
 const handler = async (req, res) => {
  //console.log("before post = ",req.body)
   if (req.method === "PUT") {
-    console.log(req.body);
+    //console.log(req.body);
 
     //const bytes = CryptoJS.AES.decrypt(user.password, process.env.AES_ENCRYPT );
     //const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
@@ -22,14 +22,14 @@ const handler = async (req, res) => {
       {
         $set: {
           password: CryptoJS.AES.encrypt(
-            req.body.password,
+            req.body.newPassword,
             process.env.AES_ENCRYPT
           ).toString(),
         },
       },
       { returnOriginal: false }
     );
-    console.log("After = ", user.password);
+    //console.log("After = ", user.password);
 
     if (user) {
       let authToken = jwt.sign(

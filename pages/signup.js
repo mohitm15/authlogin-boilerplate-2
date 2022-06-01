@@ -49,7 +49,7 @@ const Signup = () => {
     });
 
     const json = await response.json();
-    console.log("response from ui = ", json);
+    //console.log("response from ui = ", json);
 
     if (json.success === true) {
       setCredentials((prevCredentials) => ({
@@ -79,11 +79,11 @@ const Signup = () => {
   };
 
   function togglePasswordVisibilty() {
-    setShowPassword(!showPassword ? true : false);
+    setShowPassword(!showPassword);
   }
 
   function toggleConfmPasswordVisibilty() {
-    setShowConfmPassword(!showConfmPassword ? true : false);
+    setShowConfmPassword(!showConfmPassword);
   }
 
   return (
@@ -207,7 +207,7 @@ const Signup = () => {
                       required
                       style={{ border: 0, outline: "none" }}
                     />
-                    {showPassword ? (
+                    {showConfmPassword ? (
                       <AiFillEyeInvisible
                         title="Hide Password"
                         onClick={toggleConfmPasswordVisibilty}

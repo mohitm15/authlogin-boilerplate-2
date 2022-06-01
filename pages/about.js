@@ -26,7 +26,7 @@ const About = ({usertoken}) => {
 
   let userdetails = {}
   
-    console.log("usertoken in about =",usertoken)
+  //console.log("usertoken in about =",usertoken)
   try{
     if(usertoken.value != null){
     console.log("us = ",usertoken)

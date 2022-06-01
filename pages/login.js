@@ -15,7 +15,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/api/login", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ const Login = () => {
       }),
     });
     const json = await response.json();
-    console.log("resp from login ui= ",json);
+    //console.log("resp from login ui= ",json);
 
     if (json.success === true) {
       //storing the authtoken
@@ -83,8 +83,8 @@ const Login = () => {
                 </label>
                 <input
                   type="email"
-                  className="shadow border rounded-md sm:rounded-lg w-full py-2 px-1 sm:px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder:italic placeholder:text-gray-400"
-                  placeholder="Type email here..."
+                  className="shadow border rounded-md sm:rounded-lg w-full py-2 px-1 sm:px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder:text-gray-400"
+                  placeholder="for eg: mohit123@test.com"
                   id="email"
                   name="email"
                   value={credentials.email}
@@ -106,10 +106,10 @@ const Login = () => {
                   <span className="flex flex-row items-center  bg-white rounded-md px-1 sm:px-3  w-full">
                     <input
                       type={showPassword ? "text" : "password"}
-                      className="shadow appearance-none border border-red-500 rounded-md sm:rounded-lg w-full py-2 text-gray-700 leading-tight focus:border-sky-700 focus:shadow-outline placeholder:italic placeholder:text-gray-400"
+                      className="shadow appearance-none border border-red-500 rounded-md sm:rounded-lg w-full py-2 text-gray-700 leading-tight focus:border-sky-700 focus:shadow-outline  placeholder:text-gray-400"
                       id="password"
                       name="password"
-                      placeholder="Type password here...  "
+                      placeholder="for eg:mohit123@test.com"
                       value={credentials.password}
                       onChange={onChange}
                       style={{ outline: "none", border: 0 }}

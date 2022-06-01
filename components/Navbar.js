@@ -8,14 +8,11 @@ const Navbar = ({usertoken,logout}) => {
   const router = useRouter();
 
 
-  console.log("usertoken from  navbar= ",usertoken)
+  //console.log("usertoken from  navbar= ",usertoken)
 
 
   //TODO1: react-toastify (may be module is not supporting)
 
-  //TODO2: changePassword functionality still facing error while decrypting
-
-  
 
   return (
     <>
@@ -55,7 +52,7 @@ const Navbar = ({usertoken,logout}) => {
               <a className="mr-5 hover:text-white">About</a>
             </Link>
           </nav>
-          {usertoken && (
+          {usertoken.value &&  (
             <button
               className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3  focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0"
               onClick={logout}
@@ -65,7 +62,7 @@ const Navbar = ({usertoken,logout}) => {
               </Link>
             </button>
           )}
-          {!usertoken && (
+          {!usertoken.value && (
             <div className="flex flex-row space-x-2">
               <button className="inline-flex items-center bg-blue-800 text-white border-2 border-white rounded-lg py-1 px-3 focus:outline-none hover:bg-blue-600 text-base mt-4 md:mt-0">
                 <Link href={"/login"}>

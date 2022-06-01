@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-export default function Home() {
+export default function Home({usertoken}) {
  
   const router = useRouter();
 
@@ -21,7 +21,7 @@ export default function Home() {
               <div className="flex flex-col w-full justify-center items-start md:w-4/5 md:text-left xl:w-2/5 text-white ">
                   
                 <h1 className="my-4 text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight">
-                  Welcome username !
+                  Welcome To Authlogin !
                 </h1>
                 <p className="leading-normal text-base text-justify md:text-lg lg:text-xl xl:text-2xl mb-4 md:mb-6 lg:mb-8 selection:bg-yellow-100 selection:text-green-800">
                 JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
