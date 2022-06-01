@@ -29,7 +29,7 @@ const About = ({usertoken}) => {
   //console.log("usertoken in about =",usertoken)
   try{
     if(usertoken.value != null){
-    console.log("us = ",usertoken)
+    //console.log("us = ",usertoken)
     userdetails = parseJwt(usertoken.value);
     username = userdetails.name;
   }
