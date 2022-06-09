@@ -48,7 +48,7 @@ const About = ({usertoken}) => {
         <section className="text-gray-200 bg-gradient-to-l from-blue-600 to-indigo-900 body-font h-screen">
           <div className="container px-5 py-24 mx-auto">
             <div className="flex flex-col text-center w-full mb-20">
-              <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">
+              <h1 className="sm:text-5xl text-2xl font-medium title-font mb-4 text-white font-Dancing">
                 Visit Your Profile Here
               </h1>
               <p className="lg:w-2/3 mx-auto leading-relaxed text-base xl:text-xl">

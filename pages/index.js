@@ -20,7 +20,7 @@ export default function Home({usertoken}) {
               {/* Left col */}
               <div className="flex flex-col w-full justify-center items-start md:w-4/5 md:text-left xl:w-2/5 text-white ">
                   
-                <h1 className="my-4 text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight">
+                <h1 className="my-4 text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight font-Dancing">
                   Welcome To Authlogin !
                 </h1>
                 <p className="leading-normal text-base text-justify md:text-lg lg:text-xl xl:text-2xl mb-4 md:mb-6 lg:mb-8 selection:bg-yellow-100 selection:text-green-800">
